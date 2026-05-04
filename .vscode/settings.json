@@ -1,0 +1,4 @@
+{
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "cmake.sourceDirectory": "C:/app_mobile/app_mobile/windows"
+}

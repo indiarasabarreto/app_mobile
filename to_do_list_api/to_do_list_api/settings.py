@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-uy#l=sd-oi*9cw##6-1pgd1k6w)v#mz^_w5$$2c(%sjarv96w&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -31,15 +31,14 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
     'rest_framework',
-    'rest_framework.authtoken',
     'tasks',
 ]
 
@@ -123,14 +122,16 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+from datetime import timedelta
+
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated', 
-    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
 }
 
-import os
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
