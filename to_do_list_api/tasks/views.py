@@ -1,13 +1,14 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from .models import Task
 from .serializers import TaskSerializer
-from datetime import date
 
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     
+    # Now Django knows what 'permissions' is and will allow open access
+    permission_classes = [permissions.AllowAny]
 
-def get_queryset(self):
-    today = date.today()
-    tasks = Task.objects.filter(data=today)
+    def get_queryset(self):
+        # Returns all tasks ordered by section
+        return Task.objects.all().order_by('section', 'title')

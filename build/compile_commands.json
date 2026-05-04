@@ -1,0 +1,80 @@
+[
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /W4 /WX /wd\\\"4100\\\" /EHsc /Foflutter\\CMakeFiles\\flutter_wrapper_plugin.dir\\ephemeral\\cpp_client_wrapper\\core_implementations.cc.obj /Fdflutter\\CMakeFiles\\flutter_wrapper_plugin.dir\\flutter_wrapper_plugin.pdb /FS -c C:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\core_implementations.cc",
+  "file": "C:/app_mobile/app_mobile/windows/flutter/ephemeral/cpp_client_wrapper/core_implementations.cc",
+  "output": "C:/app_mobile/build/flutter/CMakeFiles/flutter_wrapper_plugin.dir/ephemeral/cpp_client_wrapper/core_implementations.cc.obj"
+},
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /W4 /WX /wd\\\"4100\\\" /EHsc /Foflutter\\CMakeFiles\\flutter_wrapper_plugin.dir\\ephemeral\\cpp_client_wrapper\\standard_codec.cc.obj /Fdflutter\\CMakeFiles\\flutter_wrapper_plugin.dir\\flutter_wrapper_plugin.pdb /FS -c C:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\standard_codec.cc",
+  "file": "C:/app_mobile/app_mobile/windows/flutter/ephemeral/cpp_client_wrapper/standard_codec.cc",
+  "output": "C:/app_mobile/build/flutter/CMakeFiles/flutter_wrapper_plugin.dir/ephemeral/cpp_client_wrapper/standard_codec.cc.obj"
+},
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /W4 /WX /wd\\\"4100\\\" /EHsc /Foflutter\\CMakeFiles\\flutter_wrapper_plugin.dir\\ephemeral\\cpp_client_wrapper\\plugin_registrar.cc.obj /Fdflutter\\CMakeFiles\\flutter_wrapper_plugin.dir\\flutter_wrapper_plugin.pdb /FS -c C:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\plugin_registrar.cc",
+  "file": "C:/app_mobile/app_mobile/windows/flutter/ephemeral/cpp_client_wrapper/plugin_registrar.cc",
+  "output": "C:/app_mobile/build/flutter/CMakeFiles/flutter_wrapper_plugin.dir/ephemeral/cpp_client_wrapper/plugin_registrar.cc.obj"
+},
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /W4 /WX /wd\\\"4100\\\" /EHsc /Foflutter\\CMakeFiles\\flutter_wrapper_app.dir\\ephemeral\\cpp_client_wrapper\\core_implementations.cc.obj /Fdflutter\\CMakeFiles\\flutter_wrapper_app.dir\\flutter_wrapper_app.pdb /FS -c C:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\core_implementations.cc",
+  "file": "C:/app_mobile/app_mobile/windows/flutter/ephemeral/cpp_client_wrapper/core_implementations.cc",
+  "output": "C:/app_mobile/build/flutter/CMakeFiles/flutter_wrapper_app.dir/ephemeral/cpp_client_wrapper/core_implementations.cc.obj"
+},
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /W4 /WX /wd\\\"4100\\\" /EHsc /Foflutter\\CMakeFiles\\flutter_wrapper_app.dir\\ephemeral\\cpp_client_wrapper\\standard_codec.cc.obj /Fdflutter\\CMakeFiles\\flutter_wrapper_app.dir\\flutter_wrapper_app.pdb /FS -c C:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\standard_codec.cc",
+  "file": "C:/app_mobile/app_mobile/windows/flutter/ephemeral/cpp_client_wrapper/standard_codec.cc",
+  "output": "C:/app_mobile/build/flutter/CMakeFiles/flutter_wrapper_app.dir/ephemeral/cpp_client_wrapper/standard_codec.cc.obj"
+},
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /W4 /WX /wd\\\"4100\\\" /EHsc /Foflutter\\CMakeFiles\\flutter_wrapper_app.dir\\ephemeral\\cpp_client_wrapper\\flutter_engine.cc.obj /Fdflutter\\CMakeFiles\\flutter_wrapper_app.dir\\flutter_wrapper_app.pdb /FS -c C:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\flutter_engine.cc",
+  "file": "C:/app_mobile/app_mobile/windows/flutter/ephemeral/cpp_client_wrapper/flutter_engine.cc",
+  "output": "C:/app_mobile/build/flutter/CMakeFiles/flutter_wrapper_app.dir/ephemeral/cpp_client_wrapper/flutter_engine.cc.obj"
+},
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /W4 /WX /wd\\\"4100\\\" /EHsc /Foflutter\\CMakeFiles\\flutter_wrapper_app.dir\\ephemeral\\cpp_client_wrapper\\flutter_view_controller.cc.obj /Fdflutter\\CMakeFiles\\flutter_wrapper_app.dir\\flutter_wrapper_app.pdb /FS -c C:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\flutter_view_controller.cc",
+  "file": "C:/app_mobile/app_mobile/windows/flutter/ephemeral/cpp_client_wrapper/flutter_view_controller.cc",
+  "output": "C:/app_mobile/build/flutter/CMakeFiles/flutter_wrapper_app.dir/ephemeral/cpp_client_wrapper/flutter_view_controller.cc.obj"
+},
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DFLUTTER_VERSION=\\\"1.0.0+1\\\" -DFLUTTER_VERSION_BUILD=1 -DFLUTTER_VERSION_MAJOR=1 -DFLUTTER_VERSION_MINOR=0 -DFLUTTER_VERSION_PATCH=0 -DNOMINMAX -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -IC:\\app_mobile\\app_mobile\\windows -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /W4 /WX /wd\\\"4100\\\" /EHsc /Forunner\\CMakeFiles\\app_mobile.dir\\flutter_window.cpp.obj /Fdrunner\\CMakeFiles\\app_mobile.dir\\ /FS -c C:\\app_mobile\\app_mobile\\windows\\runner\\flutter_window.cpp",
+  "file": "C:/app_mobile/app_mobile/windows/runner/flutter_window.cpp",
+  "output": "C:/app_mobile/build/runner/CMakeFiles/app_mobile.dir/flutter_window.cpp.obj"
+},
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DFLUTTER_VERSION=\\\"1.0.0+1\\\" -DFLUTTER_VERSION_BUILD=1 -DFLUTTER_VERSION_MAJOR=1 -DFLUTTER_VERSION_MINOR=0 -DFLUTTER_VERSION_PATCH=0 -DNOMINMAX -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -IC:\\app_mobile\\app_mobile\\windows -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /W4 /WX /wd\\\"4100\\\" /EHsc /Forunner\\CMakeFiles\\app_mobile.dir\\main.cpp.obj /Fdrunner\\CMakeFiles\\app_mobile.dir\\ /FS -c C:\\app_mobile\\app_mobile\\windows\\runner\\main.cpp",
+  "file": "C:/app_mobile/app_mobile/windows/runner/main.cpp",
+  "output": "C:/app_mobile/build/runner/CMakeFiles/app_mobile.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DFLUTTER_VERSION=\\\"1.0.0+1\\\" -DFLUTTER_VERSION_BUILD=1 -DFLUTTER_VERSION_MAJOR=1 -DFLUTTER_VERSION_MINOR=0 -DFLUTTER_VERSION_PATCH=0 -DNOMINMAX -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -IC:\\app_mobile\\app_mobile\\windows -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /W4 /WX /wd\\\"4100\\\" /EHsc /Forunner\\CMakeFiles\\app_mobile.dir\\utils.cpp.obj /Fdrunner\\CMakeFiles\\app_mobile.dir\\ /FS -c C:\\app_mobile\\app_mobile\\windows\\runner\\utils.cpp",
+  "file": "C:/app_mobile/app_mobile/windows/runner/utils.cpp",
+  "output": "C:/app_mobile/build/runner/CMakeFiles/app_mobile.dir/utils.cpp.obj"
+},
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DFLUTTER_VERSION=\\\"1.0.0+1\\\" -DFLUTTER_VERSION_BUILD=1 -DFLUTTER_VERSION_MAJOR=1 -DFLUTTER_VERSION_MINOR=0 -DFLUTTER_VERSION_PATCH=0 -DNOMINMAX -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -IC:\\app_mobile\\app_mobile\\windows -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /W4 /WX /wd\\\"4100\\\" /EHsc /Forunner\\CMakeFiles\\app_mobile.dir\\win32_window.cpp.obj /Fdrunner\\CMakeFiles\\app_mobile.dir\\ /FS -c C:\\app_mobile\\app_mobile\\windows\\runner\\win32_window.cpp",
+  "file": "C:/app_mobile/app_mobile/windows/runner/win32_window.cpp",
+  "output": "C:/app_mobile/build/runner/CMakeFiles/app_mobile.dir/win32_window.cpp.obj"
+},
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP -DFLUTTER_VERSION=\\\"1.0.0+1\\\" -DFLUTTER_VERSION_BUILD=1 -DFLUTTER_VERSION_MAJOR=1 -DFLUTTER_VERSION_MINOR=0 -DFLUTTER_VERSION_PATCH=0 -DNOMINMAX -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -IC:\\app_mobile\\app_mobile\\windows -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral -IC:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /W4 /WX /wd\\\"4100\\\" /EHsc /Forunner\\CMakeFiles\\app_mobile.dir\\__\\flutter\\generated_plugin_registrant.cc.obj /Fdrunner\\CMakeFiles\\app_mobile.dir\\ /FS -c C:\\app_mobile\\app_mobile\\windows\\flutter\\generated_plugin_registrant.cc",
+  "file": "C:/app_mobile/app_mobile/windows/flutter/generated_plugin_registrant.cc",
+  "output": "C:/app_mobile/build/runner/CMakeFiles/app_mobile.dir/__/flutter/generated_plugin_registrant.cc.obj"
+},
+{
+  "directory": "C:/app_mobile/build",
+  "command": "C:\\PROGRA~2\\WINDOW~4\\10\\bin\\100261~1.0\\x86\\rc.exe -DFLUTTER_VERSION=\\\"1.0.0+1\\\" -DFLUTTER_VERSION_BUILD=1 -DFLUTTER_VERSION_MAJOR=1 -DFLUTTER_VERSION_MINOR=0 -DFLUTTER_VERSION_PATCH=0 -DNOMINMAX -DUNICODE -D_DEBUG -D_HAS_EXCEPTIONS=0 -D_UNICODE -I C:\\app_mobile\\app_mobile\\windows -I C:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral -I C:\\app_mobile\\app_mobile\\windows\\flutter\\ephemeral\\cpp_client_wrapper\\include -DWIN32 -D_DEBUG /fo runner\\CMakeFiles\\app_mobile.dir\\Runner.rc.res C:\\app_mobile\\app_mobile\\windows\\runner\\Runner.rc",
+  "file": "C:/app_mobile/app_mobile/windows/runner/Runner.rc",
+  "output": "C:/app_mobile/build/runner/CMakeFiles/app_mobile.dir/Runner.rc.res"
+}
+]

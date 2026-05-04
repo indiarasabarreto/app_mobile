@@ -8,12 +8,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:app_mobile/main.dart';
+import 'package:app_mobile/main.dart' as main;
 
 void main() {
-  testWidgets('TodoListScreen smoke test', (WidgetTester tester) async {
+  testWidgets('TaskListScreen smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(home: TodoListScreen(token: 'dummy_token')));
+    await tester.pumpWidget(MyApp());
 
     // Verify that the app bar title is present.
     expect(find.text('Lista de Limpeza'), findsOneWidget);

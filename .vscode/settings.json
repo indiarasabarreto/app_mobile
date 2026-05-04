@@ -1,4 +1,7 @@
 {
     "python-envs.defaultEnvManager": "ms-python.python:system",
-    "cmake.sourceDirectory": "C:/app_mobile/app_mobile/windows"
+    "cmake.sourceDirectory": "C:/app_mobile/app_mobile/windows",
+    "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+    "python.terminal.activateEnvironment": true,
+    "terminal.integrated.defaultProfile.windows": "PowerShell"
 }
