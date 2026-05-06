@@ -5,15 +5,14 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:app_mobile/main.dart' as main;
+import 'package:app_mobile/main.dart';
 
 void main() {
   testWidgets('TaskListScreen smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(TempleApp());
 
     // Verify that the app bar title is present.
     expect(find.text('Lista de Limpeza'), findsOneWidget);

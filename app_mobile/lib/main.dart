@@ -43,7 +43,7 @@ class TempleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Terreiro',
+      title: 'Limpeza do Terreiro',
       theme: ThemeData(
         useMaterial3: true,
         fontFamily: 'Georgia',
@@ -77,7 +77,7 @@ class _UserCheckState extends State<UserCheck> {
     Navigator.pushReplacement(context, MaterialPageRoute(
       builder: (_) => name != null ? const HomeScreen() : const WelcomeScreen(),
     ));
-  }
+  } 
 
   @override
   Widget build(BuildContext context) => const Scaffold(
@@ -103,8 +103,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('user_name', _nameCtrl.text.trim());
     await prefs.setString('user_team', _team);
-    if (mounted) Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (_) => const HomeScreen()));
+    if (mounted) {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (_) => const HomeScreen()));
+    }
   }
 
   @override
@@ -131,7 +133,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   child: Image.asset(
                     'assets/logo.jpg',
                     fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => Container(
+                    errorBuilder: (_, _, _) => Container(
                       color: _white,
                       child: const Icon(Icons.auto_awesome, color: _purple, size: 60),
                     ),
@@ -220,7 +222,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     hintText: hint,
     hintStyle: TextStyle(color: _textLight),
     filled: true,
-    fillColor: Colors.black.withOpacity(0.3),
+    fillColor: Colors.black.withValues(alpha: 77),
     border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: _purple.withOpacity(0.4))),
     enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: _purple.withOpacity(0.4))),
     focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: _purpleLight, width: 1.5)),
@@ -258,8 +260,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   Future<void> _logout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
-    if (mounted) Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (_) => const WelcomeScreen()));
+    if (mounted) {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (_) => const WelcomeScreen()));
+    }
   }
 
   @override
@@ -267,7 +271,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     return Scaffold(
       backgroundColor: _offWhite,
       body: NestedScrollView(
-        headerSliverBuilder: (_, __) => [
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
           SliverAppBar(
             expandedHeight: 160,
             pinned: true,
@@ -323,7 +327,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               child: Image.asset(
                 'assets/logo.jpg',
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) =>
+                errorBuilder: (_, _, _) =>
                     const Icon(Icons.auto_awesome, color: _purple, size: 26),
               ),
             ),
