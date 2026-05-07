@@ -15,30 +15,28 @@ void main() {
 }
 
 // ─── PALETA ──────────────────────────────────────────────────────────
-const _purple       = Color(0xFF7B2D8B);
-const _purpleLight  = Color(0xFFB06EC0);
-const _purpleFaint  = Color(0xFFF3E8F7);
-const _purpleBorder = Color(0xFFDDB8EA);
-const _white        = Color(0xFFFFFFFF);
-const _offWhite     = Color(0xFFFAF7FC);
-const _darkBg       = Color(0xFF1A0A22);
-const _textDark     = Color(0xFF2C1040);
-const _textMid      = Color(0xFF7A5F85);
-const _textLight    = Color(0xFFB8A0C4);
-const _red          = Color(0xFFD32F2F);
-const _redFaint     = Color(0xFFFFEBEE);
-const _green        = Color(0xFF2E7D32);
-const _greenFaint   = Color(0xFFE8F5E9);
+const _purple      = Color(0xFF7B2D8B);
+const _purpleLight = Color(0xFFB06EC0);
+const _purpleFaint = Color(0xFFF3E8F7);
+const _purpleBorder= Color(0xFFDDB8EA);
+const _white       = Color(0xFFFFFFFF);
+const _offWhite    = Color(0xFFFAF7FC);
+const _darkBg      = Color(0xFF1A0A22);
+const _textDark    = Color(0xFF2C1040);
+const _textMid     = Color(0xFF7A5F85);
+const _textLight   = Color(0xFFB8A0C4);
+const _red         = Color(0xFFD32F2F);
+const _redFaint    = Color(0xFFFFEBEE);
+const _green       = Color(0xFF2E7D32);
+const _greenFaint  = Color(0xFFE8F5E9);
 
-// ⚠️ ALTERE PARA O IP DO SEU COMPUTADOR
-const _baseUrl     = "http://192.168.1.212:8000/api/tasks/";
-const _suppliesUrl = "http://192.168.1.212:8000/api/supplies/";
-const _elementsUrl = "http://192.168.1.212:8000/api/elements/";
+const _baseUrl     = "https://appmobile-production-1f4d.up.railway.app/api/tasks/";
+const _suppliesUrl = "https://appmobile-production-1f4d.up.railway.app/api/supplies/";
+const _elementsUrl = "https://appmobile-production-1f4d.up.railway.app/api/elements/";
 
 // ─── APP ─────────────────────────────────────────────────────────────
 class TempleApp extends StatelessWidget {
   const TempleApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -77,7 +75,7 @@ class _UserCheckState extends State<UserCheck> {
     Navigator.pushReplacement(context, MaterialPageRoute(
       builder: (_) => name != null ? const HomeScreen() : const WelcomeScreen(),
     ));
-  } 
+  }
 
   @override
   Widget build(BuildContext context) => const Scaffold(
@@ -86,7 +84,7 @@ class _UserCheckState extends State<UserCheck> {
   );
 }
 
-// ─── WELCOME SCREEN ───────────────────────────────────────────────────
+// ─── WELCOME SCREEN ──────────────────────────────────────────────────
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
   @override
@@ -103,10 +101,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('user_name', _nameCtrl.text.trim());
     await prefs.setString('user_team', _team);
-    if (mounted) {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (_) => const HomeScreen()));
-    }
+    if (mounted) Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (_) => const HomeScreen()));
   }
 
   @override
@@ -124,16 +120,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 width: 140, height: 140,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: _white,
-                  boxShadow: [
-                    BoxShadow(color: _purple.withOpacity(0.5), blurRadius: 40, spreadRadius: 5),
-                  ],
+                  color: Colors.transparent,
+                  boxShadow: [BoxShadow(
+                    color: _purple.withOpacity(0.5),
+                    blurRadius: 40, spreadRadius: 5,
+                  )],
                 ),
                 child: ClipOval(
                   child: Image.asset(
-                    'assets/logo.jpg',
+                    'assets/logo.jpeg',
                     fit: BoxFit.cover,
-                    errorBuilder: (_, _, _) => Container(
+                    errorBuilder: (context, error, stackTrace) => Container(
                       color: _white,
                       child: const Icon(Icons.auto_awesome, color: _purple, size: 60),
                     ),
@@ -141,14 +138,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
               ),
               const SizedBox(height: 32),
-              const Text('Limpeza do Terreiro',
-                  style: TextStyle(color: _white, fontSize: 22, fontWeight: FontWeight.bold, letterSpacing: 0.5)),
+              const Text('Limpeza do Terreiro', style: TextStyle(
+                color: _white, fontSize: 22, fontWeight: FontWeight.bold, letterSpacing: 0.5,
+              )),
               const SizedBox(height: 6),
               const Text('Quem está trabalhando hoje?',
                   style: TextStyle(color: _purpleLight, fontSize: 14)),
               const SizedBox(height: 40),
-
-              // Card de login
               Container(
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
@@ -159,16 +155,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _fieldLabel('Seu nome'),
+                    _label('Seu nome'),
                     const SizedBox(height: 8),
                     TextField(
                       controller: _nameCtrl,
                       style: const TextStyle(color: _white),
                       textCapitalization: TextCapitalization.words,
-                      decoration: _darkInput('Digite seu nome...'),
+                      decoration: _input('Digite seu nome...'),
                     ),
                     const SizedBox(height: 20),
-                    _fieldLabel('Sua equipe'),
+                    _label('Sua equipe'),
                     const SizedBox(height: 8),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -195,12 +191,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       child: ElevatedButton(
                         onPressed: _save,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: _purple,
-                          foregroundColor: _white,
+                          backgroundColor: _purple, foregroundColor: _white,
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                          elevation: 6,
-                          shadowColor: _purple.withOpacity(0.6),
+                          elevation: 6, shadowColor: _purple.withOpacity(0.6),
                         ),
                         child: const Text('Vamos trabalhar!', style: TextStyle(fontSize: 16)),
                       ),
@@ -215,22 +209,26 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
-  Widget _fieldLabel(String t) => Text(t,
-      style: const TextStyle(color: _purpleLight, fontWeight: FontWeight.w600, fontSize: 13, letterSpacing: 0.4));
+  Widget _label(String t) => Text(t, style: const TextStyle(
+    color: _purpleLight, fontWeight: FontWeight.w600, fontSize: 13, letterSpacing: 0.4,
+  ));
 
-  InputDecoration _darkInput(String hint) => InputDecoration(
+  InputDecoration _input(String hint) => InputDecoration(
     hintText: hint,
     hintStyle: TextStyle(color: _textLight),
     filled: true,
-    fillColor: Colors.black.withValues(alpha: 77),
-    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: _purple.withOpacity(0.4))),
-    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: _purple.withOpacity(0.4))),
-    focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: _purpleLight, width: 1.5)),
+    fillColor: Colors.black.withOpacity(0.3),
+    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: _purple.withOpacity(0.4))),
+    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: _purple.withOpacity(0.4))),
+    focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: _purpleLight, width: 1.5)),
     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
   );
 }
 
-// ─── HOME SCREEN (3 abas) ─────────────────────────────────────────────
+// ─── HOME SCREEN ─────────────────────────────────────────────────────
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   @override
@@ -260,115 +258,105 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   Future<void> _logout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
-    if (mounted) {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (_) => const WelcomeScreen()));
-    }
+    if (mounted) Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (_) => const WelcomeScreen()));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: _offWhite,
-      body: NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          SliverAppBar(
-            expandedHeight: 160,
-            pinned: true,
-            backgroundColor: _darkBg,
-            flexibleSpace: FlexibleSpaceBar(background: _buildHeader()),
-            bottom: TabBar(
-              controller: _tabs,
-              indicatorColor: _purpleLight,
-              indicatorWeight: 3,
-              labelColor: _white,
-              unselectedLabelColor: _textLight,
-              labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-              tabs: const [
-                Tab(icon: Icon(Icons.checklist_rounded, size: 18), text: 'TAREFAS'),
-                Tab(icon: Icon(Icons.warning_amber_rounded, size: 18), text: 'PENDÊNCIAS'),
-                Tab(icon: Icon(Icons.inventory_2_outlined, size: 18), text: 'FALTANDO'),
-              ],
+      // ── AppBar fixo (resolve problema do clique no web) ──
+      appBar: AppBar(
+        backgroundColor: _darkBg,
+        elevation: 0,
+        titleSpacing: 12,
+        title: Row(
+          children: [
+            // Mini logo
+            Container(
+              width: 36, height: 36,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: _white,
+                boxShadow: [BoxShadow(color: _purple.withOpacity(0.4), blurRadius: 8)],
+              ),
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/logo.jpeg',
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) =>
+                      const Icon(Icons.auto_awesome, color: _purple, size: 20),
+                ),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text('Limpeza do Terreiro', style: TextStyle(
+                    color: _white, fontSize: 15, fontWeight: FontWeight.bold,
+                  )),
+                  if (_userName != null)
+                    Text('Olá, $_userName 👋',
+                        style: const TextStyle(color: _purpleLight, fontSize: 11)),
+                ],
+              ),
+            ),
+          ],
+        ),
+        // Botão de logout nas actions — funciona corretamente
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: TextButton.icon(
+              onPressed: _logout,
+              icon: const Icon(Icons.logout, color: _purpleLight, size: 14),
+              label: Text(
+                _userTeam ?? '',
+                style: const TextStyle(color: _white, fontSize: 11),
+              ),
+              style: TextButton.styleFrom(
+                backgroundColor: _purple.withOpacity(0.3),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(color: _purpleLight.withOpacity(0.4)),
+                ),
+              ),
             ),
           ),
         ],
-        body: TabBarView(
+        // Barra de progresso no bottom do AppBar
+        bottom: TabBar(
           controller: _tabs,
-          children: [
-            TasksTab(userName: _userName),
-            PendingTab(userName: _userName),
-            ShortagesTab(userName: _userName),
+          indicatorColor: _purpleLight,
+          indicatorWeight: 3,
+          labelColor: _white,
+          unselectedLabelColor: _textLight,
+          labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+          tabs: const [
+            Tab(icon: Icon(Icons.checklist_rounded, size: 18), text: 'TAREFAS'),
+            Tab(icon: Icon(Icons.warning_amber_rounded, size: 18), text: 'PENDÊNCIAS'),
+            Tab(icon: Icon(Icons.inventory_2_outlined, size: 18), text: 'FALTANDO'),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildHeader() {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [_darkBg, Color(0xFF3D1155)],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
-      padding: const EdgeInsets.fromLTRB(20, 52, 20, 8),
-      child: Row(
+      body: TabBarView(
+        controller: _tabs,
         children: [
-          Container(
-            width: 50, height: 50,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: _white,
-              boxShadow: [BoxShadow(color: _purple.withOpacity(0.5), blurRadius: 14)],
-            ),
-            child: ClipOval(
-              child: Image.asset(
-                'assets/logo.jpg',
-                fit: BoxFit.cover,
-                errorBuilder: (_, _, _) =>
-                    const Icon(Icons.auto_awesome, color: _purple, size: 26),
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text('Limpeza do Terreiro',
-                    style: TextStyle(color: _white, fontSize: 16, fontWeight: FontWeight.bold)),
-                if (_userName != null)
-                  Text('Olá, $_userName 👋',
-                      style: const TextStyle(color: _purpleLight, fontSize: 12)),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: _logout,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              decoration: BoxDecoration(
-                color: _purple.withOpacity(0.25),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: _purpleLight.withOpacity(0.4)),
-              ),
-              child: Row(children: [
-                const Icon(Icons.logout, color: _purpleLight, size: 13),
-                const SizedBox(width: 4),
-                Text(_userTeam ?? '', style: const TextStyle(color: _white, fontSize: 11)),
-              ]),
-            ),
-          ),
+          TasksTab(userName: _userName),
+          PendingTab(userName: _userName),
+          ShortagesTab(userName: _userName),
         ],
       ),
     );
   }
 }
 
-// ─── ABA: TAREFAS ─────────────────────────────────────────────────────
+// ─── ABA: TAREFAS ────────────────────────────────────────────────────
 class TasksTab extends StatefulWidget {
   final String? userName;
   const TasksTab({super.key, this.userName});
@@ -384,10 +372,7 @@ class _TasksTabState extends State<TasksTab> with AutomaticKeepAliveClientMixin 
   bool _loading = true;
 
   @override
-  void initState() {
-    super.initState();
-    _load();
-  }
+  void initState() { super.initState(); _load(); }
 
   Future<void> _load() async {
     setState(() => _loading = true);
@@ -416,7 +401,8 @@ class _TasksTabState extends State<TasksTab> with AutomaticKeepAliveClientMixin 
   Future<void> _addTask(String title, String section, String responsible) async {
     await http.post(Uri.parse(_baseUrl),
         headers: {"Content-Type": "application/json"},
-        body: jsonEncode({"title": title, "section": section, "responsible": responsible, "completed": false}));
+        body: jsonEncode({"title": title, "section": section,
+          "responsible": responsible, "completed": false}));
     _load();
   }
 
@@ -463,7 +449,7 @@ class _TasksTabState extends State<TasksTab> with AutomaticKeepAliveClientMixin 
   }
 }
 
-// ─── ABA: PENDÊNCIAS ──────────────────────────────────────────────────
+// ─── ABA: PENDÊNCIAS ─────────────────────────────────────────────────
 class PendingTab extends StatefulWidget {
   final String? userName;
   const PendingTab({super.key, this.userName});
@@ -479,10 +465,7 @@ class _PendingTabState extends State<PendingTab> with AutomaticKeepAliveClientMi
   bool _loading = true;
 
   @override
-  void initState() {
-    super.initState();
-    _load();
-  }
+  void initState() { super.initState(); _load(); }
 
   Future<void> _load() async {
     setState(() => _loading = true);
@@ -507,7 +490,8 @@ class _PendingTabState extends State<PendingTab> with AutomaticKeepAliveClientMi
     final prefs = await SharedPreferences.getInstance();
     await http.patch(Uri.parse("$_baseUrl$id/"),
         headers: {"Content-Type": "application/json"},
-        body: jsonEncode({"skipped": false, "completed": true, "made_by": prefs.getString('user_name')}));
+        body: jsonEncode({"skipped": false, "completed": true,
+          "made_by": prefs.getString('user_name')}));
     _load();
   }
 
@@ -517,17 +501,15 @@ class _PendingTabState extends State<PendingTab> with AutomaticKeepAliveClientMi
     if (_loading) return const Center(child: CircularProgressIndicator(color: _purple));
 
     if (_pending.isEmpty) {
-      return Center(
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Icon(Icons.check_circle_outline, color: _purple.withOpacity(0.3), size: 64),
-          const SizedBox(height: 16),
-          const Text('Nenhuma pendência! 🎉',
-              style: TextStyle(color: _textMid, fontSize: 16, fontWeight: FontWeight.w600)),
-          const SizedBox(height: 8),
-          const Text('Tudo realizado com axé! ✨',
-              style: TextStyle(color: _textLight, fontSize: 13)),
-        ]),
-      );
+      return Center(child: Column(mainAxisSize: MainAxisSize.min, children: [
+        Icon(Icons.check_circle_outline, color: _purple.withOpacity(0.3), size: 64),
+        const SizedBox(height: 16),
+        const Text('Nenhuma pendência! 🎉',
+            style: TextStyle(color: _textMid, fontSize: 16, fontWeight: FontWeight.w600)),
+        const SizedBox(height: 8),
+        const Text('Tudo realizado com axé! ✨',
+            style: TextStyle(color: _textLight, fontSize: 13)),
+      ]));
     }
 
     return RefreshIndicator(
@@ -539,8 +521,7 @@ class _PendingTabState extends State<PendingTab> with AutomaticKeepAliveClientMi
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-              color: _redFaint,
-              borderRadius: BorderRadius.circular(12),
+              color: _redFaint, borderRadius: BorderRadius.circular(12),
               border: Border.all(color: _red.withOpacity(0.3)),
             ),
             child: Row(children: [
@@ -563,7 +544,7 @@ class _PendingTabState extends State<PendingTab> with AutomaticKeepAliveClientMi
   }
 }
 
-// ─── ABA: FALTANDO ────────────────────────────────────────────────────
+// ─── ABA: FALTANDO ───────────────────────────────────────────────────
 class ShortagesTab extends StatefulWidget {
   final String? userName;
   const ShortagesTab({super.key, this.userName});
@@ -575,15 +556,11 @@ class _ShortagesTabState extends State<ShortagesTab> with AutomaticKeepAliveClie
   @override
   bool get wantKeepAlive => true;
 
-  List _supplies = [];
-  List _elements = [];
+  List _supplies = [], _elements = [];
   bool _loading = true;
 
   @override
-  void initState() {
-    super.initState();
-    _load();
-  }
+  void initState() { super.initState(); _load(); }
 
   Future<void> _load() async {
     setState(() => _loading = true);
@@ -629,9 +606,6 @@ class _ShortagesTabState extends State<ShortagesTab> with AutomaticKeepAliveClie
     super.build(context);
     if (_loading) return const Center(child: CircularProgressIndicator(color: _purple));
 
-    final activeSupplies = _supplies.where((s) => s['resolved'] != true).toList();
-    final activeElements = _elements.where((e) => e['resolved'] != true).toList();
-
     return RefreshIndicator(
       color: _purple,
       onRefresh: _load,
@@ -643,9 +617,8 @@ class _ShortagesTabState extends State<ShortagesTab> with AutomaticKeepAliveClie
             title: 'Produtos de Limpeza em Falta',
             color: const Color(0xFF1565C0),
             faintColor: const Color(0xFFE3F2FD),
-            items: activeSupplies,
-            onAdd: _addSupply,
-            onResolve: _resolveSupply,
+            items: _supplies.where((s) => s['resolved'] != true).toList(),
+            onAdd: _addSupply, onResolve: _resolveSupply,
           ),
           const SizedBox(height: 16),
           _ShortageSection(
@@ -653,9 +626,8 @@ class _ShortagesTabState extends State<ShortagesTab> with AutomaticKeepAliveClie
             title: 'Elementos / Bebidas em Falta',
             color: const Color(0xFF6A1B9A),
             faintColor: const Color(0xFFF3E5F5),
-            items: activeElements,
-            onAdd: _addElement,
-            onResolve: _resolveElement,
+            items: _elements.where((e) => e['resolved'] != true).toList(),
+            onAdd: _addElement, onResolve: _resolveElement,
           ),
           const SizedBox(height: 80),
         ],
@@ -664,7 +636,7 @@ class _ShortagesTabState extends State<ShortagesTab> with AutomaticKeepAliveClie
   }
 }
 
-// ─── WIDGET: PROGRESS CARD ────────────────────────────────────────────
+// ─── PROGRESS CARD ───────────────────────────────────────────────────
 class _ProgressCard extends StatelessWidget {
   final int completed, total;
   final double percent;
@@ -677,43 +649,35 @@ class _ProgressCard extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: const LinearGradient(
             colors: [_purple, _purpleLight],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight),
+            begin: Alignment.topLeft, end: Alignment.bottomRight),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [BoxShadow(color: _purple.withOpacity(0.3), blurRadius: 12, offset: const Offset(0, 4))],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(children: [
-            const Icon(Icons.task_alt, color: Colors.white70, size: 16),
-            const SizedBox(width: 6),
-            const Text('Progresso Geral',
-                style: TextStyle(color: Colors.white70, fontSize: 12, letterSpacing: 0.5)),
-            const Spacer(),
-            Text('$completed / $total',
-                style: const TextStyle(color: _white, fontWeight: FontWeight.bold, fontSize: 14)),
-          ]),
-          const SizedBox(height: 10),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(6),
-            child: LinearProgressIndicator(
-              value: percent,
-              backgroundColor: Colors.white.withOpacity(0.2),
-              color: _white,
-              minHeight: 8,
-            ),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(children: [
+          const Icon(Icons.task_alt, color: Colors.white70, size: 16),
+          const SizedBox(width: 6),
+          const Text('Progresso Geral', style: TextStyle(color: Colors.white70, fontSize: 12, letterSpacing: 0.5)),
+          const Spacer(),
+          Text('$completed / $total', style: const TextStyle(color: _white, fontWeight: FontWeight.bold, fontSize: 14)),
+        ]),
+        const SizedBox(height: 10),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(6),
+          child: LinearProgressIndicator(
+            value: percent, backgroundColor: Colors.white.withOpacity(0.2),
+            color: _white, minHeight: 8,
           ),
-          const SizedBox(height: 6),
-          Text('${(percent * 100).toInt()}% concluído',
-              style: const TextStyle(color: Colors.white70, fontSize: 11)),
-        ],
-      ),
+        ),
+        const SizedBox(height: 6),
+        Text('${(percent * 100).toInt()}% concluído',
+            style: const TextStyle(color: Colors.white70, fontSize: 11)),
+      ]),
     );
   }
 }
 
-// ─── WIDGET: SECTION CARD ─────────────────────────────────────────────
+// ─── SECTION CARD ────────────────────────────────────────────────────
 class _SectionCard extends StatelessWidget {
   final String section;
   final List tasks;
@@ -731,9 +695,7 @@ class _SectionCard extends StatelessWidget {
     final titleCtrl = TextEditingController();
     final respCtrl = TextEditingController(text: userName ?? '');
     showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
+      context: context, isScrollControlled: true, backgroundColor: Colors.transparent,
       builder: (_) => _AddSheet(
         title: 'Nova Tarefa — $section',
         fields: [
@@ -741,7 +703,8 @@ class _SectionCard extends StatelessWidget {
           _Field(ctrl: respCtrl, label: 'Responsável', hint: 'Nome ou equipe...'),
         ],
         onConfirm: () {
-          if (titleCtrl.text.trim().isNotEmpty) onAddTask(titleCtrl.text.trim(), respCtrl.text.trim());
+          if (titleCtrl.text.trim().isNotEmpty)
+            onAddTask(titleCtrl.text.trim(), respCtrl.text.trim());
         },
       ),
     );
@@ -753,73 +716,69 @@ class _SectionCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 14),
       decoration: BoxDecoration(
-        color: _white,
-        borderRadius: BorderRadius.circular(16),
+        color: _white, borderRadius: BorderRadius.circular(16),
         border: Border.all(color: _purpleBorder.withOpacity(0.5)),
         boxShadow: [BoxShadow(color: _purple.withOpacity(0.06), blurRadius: 10, offset: const Offset(0, 3))],
       ),
-      child: Column(
-        children: [
-          // Header
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              color: _purpleFaint,
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-              border: Border(bottom: BorderSide(color: _purpleBorder.withOpacity(0.4))),
+      child: Column(children: [
+        // Header da seção
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          decoration: BoxDecoration(
+            color: _purpleFaint,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+            border: Border(bottom: BorderSide(color: _purpleBorder.withOpacity(0.4))),
+          ),
+          child: Row(children: [
+            const Icon(Icons.folder_special_rounded, color: _purple, size: 16),
+            const SizedBox(width: 8),
+            Expanded(child: Text(section.toUpperCase(), style: const TextStyle(
+                color: _purple, fontWeight: FontWeight.bold, fontSize: 12, letterSpacing: 0.8))),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+              decoration: BoxDecoration(color: _purple.withOpacity(0.1), borderRadius: BorderRadius.circular(10)),
+              child: Text('$done/${tasks.length}',
+                  style: const TextStyle(color: _purple, fontSize: 11, fontWeight: FontWeight.w600)),
             ),
-            child: Row(children: [
-              const Icon(Icons.folder_special_rounded, color: _purple, size: 16),
-              const SizedBox(width: 8),
-              Expanded(child: Text(section.toUpperCase(),
-                  style: const TextStyle(color: _purple, fontWeight: FontWeight.bold, fontSize: 12, letterSpacing: 0.8))),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                decoration: BoxDecoration(color: _purple.withOpacity(0.1), borderRadius: BorderRadius.circular(10)),
-                child: Text('$done/${tasks.length}',
-                    style: const TextStyle(color: _purple, fontSize: 11, fontWeight: FontWeight.w600)),
-              ),
+          ]),
+        ),
+        // Tarefas
+        ...tasks.map((task) => _TaskTile(
+          task: task, userName: userName,
+          onToggle: (val) => onToggle(task['id'], val),
+          onSkip: () => onMarkSkipped(task['id']),
+        )),
+        // Botão adicionar
+        InkWell(
+          onTap: () => _showAddDialog(context),
+          borderRadius: const BorderRadius.vertical(bottom: Radius.circular(16)),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            decoration: BoxDecoration(
+              border: Border(top: BorderSide(color: _purpleBorder.withOpacity(0.4))),
+            ),
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              const Icon(Icons.add, color: _purple, size: 16),
+              const SizedBox(width: 6),
+              const Text('Adicionar tarefa',
+                  style: TextStyle(color: _purple, fontSize: 13, fontWeight: FontWeight.w500)),
             ]),
           ),
-
-          // Tarefas
-          ...tasks.map((task) => _TaskTile(
-            task: task,
-            userName: userName,
-            onToggle: (val) => onToggle(task['id'], val),
-            onSkip: () => onMarkSkipped(task['id']),
-          )),
-
-          // Botão adicionar
-          InkWell(
-            onTap: () => _showAddDialog(context),
-            borderRadius: const BorderRadius.vertical(bottom: Radius.circular(16)),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: BoxDecoration(
-                border: Border(top: BorderSide(color: _purpleBorder.withOpacity(0.4))),
-              ),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                const Icon(Icons.add, color: _purple, size: 16),
-                const SizedBox(width: 6),
-                const Text('Adicionar tarefa', style: TextStyle(color: _purple, fontSize: 13, fontWeight: FontWeight.w500)),
-              ]),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ]),
     );
   }
 }
 
-// ─── WIDGET: TASK TILE ────────────────────────────────────────────────
+// ─── TASK TILE ───────────────────────────────────────────────────────
 class _TaskTile extends StatelessWidget {
   final dynamic task;
   final String? userName;
   final ValueChanged<bool> onToggle;
   final VoidCallback onSkip;
 
-  const _TaskTile({required this.task, required this.userName, required this.onToggle, required this.onSkip});
+  const _TaskTile({required this.task, required this.userName,
+    required this.onToggle, required this.onSkip});
 
   @override
   Widget build(BuildContext context) {
@@ -836,101 +795,86 @@ class _TaskTile extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GestureDetector(
-              onTap: () => onToggle(!done),
-              child: Container(
-                width: 24, height: 24,
-                margin: const EdgeInsets.only(top: 1),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: done ? _green : _white,
-                  border: Border.all(color: done ? _green : _purpleBorder, width: 2),
-                ),
-                child: done ? const Icon(Icons.check, color: _white, size: 14) : null,
+        child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          GestureDetector(
+            onTap: () => onToggle(!done),
+            child: Container(
+              width: 24, height: 24,
+              margin: const EdgeInsets.only(top: 1),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: done ? _green : _white,
+                border: Border.all(color: done ? _green : _purpleBorder, width: 2),
               ),
+              child: done ? const Icon(Icons.check, color: _white, size: 14) : null,
             ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title,
-                      style: TextStyle(
-                        fontSize: 14, color: done ? _textMid : _textDark,
-                        decoration: done ? TextDecoration.lineThrough : null,
-                        decorationColor: _textMid, height: 1.4,
-                      )),
-                  const SizedBox(height: 4),
-                  Row(children: [
-                    const Icon(Icons.people_outline, size: 11, color: _textLight),
-                    const SizedBox(width: 3),
-                    Flexible(child: Text(responsible,
-                        style: const TextStyle(color: _textLight, fontSize: 11),
-                        overflow: TextOverflow.ellipsis)),
-                    if (isMyTask && !done) ...[
-                      const SizedBox(width: 6),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
-                        decoration: BoxDecoration(
-                          color: _purpleFaint, borderRadius: BorderRadius.circular(6),
-                          border: Border.all(color: _purpleBorder),
-                        ),
-                        child: const Text('você',
-                            style: TextStyle(color: _purple, fontSize: 9, fontWeight: FontWeight.bold)),
-                      ),
-                    ],
-                  ]),
-                ],
-              ),
-            ),
-            // Botão não realizado
-            if (!done)
-              GestureDetector(
-                onTap: () => _confirmSkip(context),
-                child: Container(
-                  padding: const EdgeInsets.all(6),
-                  margin: const EdgeInsets.only(left: 8),
+          ),
+          const SizedBox(width: 12),
+          Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(title, style: TextStyle(
+              fontSize: 14, color: done ? _textMid : _textDark,
+              decoration: done ? TextDecoration.lineThrough : null,
+              decorationColor: _textMid, height: 1.4,
+            )),
+            const SizedBox(height: 4),
+            Row(children: [
+              const Icon(Icons.people_outline, size: 11, color: _textLight),
+              const SizedBox(width: 3),
+              Flexible(child: Text(responsible,
+                  style: const TextStyle(color: _textLight, fontSize: 11),
+                  overflow: TextOverflow.ellipsis)),
+              if (isMyTask && !done) ...[
+                const SizedBox(width: 6),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
                   decoration: BoxDecoration(
-                    color: _redFaint, borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: _red.withOpacity(0.3)),
+                    color: _purpleFaint, borderRadius: BorderRadius.circular(6),
+                    border: Border.all(color: _purpleBorder),
                   ),
-                  child: const Icon(Icons.remove_circle_outline, color: _red, size: 16),
+                  child: const Text('você', style: TextStyle(
+                      color: _purple, fontSize: 9, fontWeight: FontWeight.bold)),
                 ),
+              ],
+            ]),
+          ])),
+          if (!done)
+            GestureDetector(
+              onTap: () => _confirmSkip(context),
+              child: Container(
+                padding: const EdgeInsets.all(6),
+                margin: const EdgeInsets.only(left: 8),
+                decoration: BoxDecoration(
+                  color: _redFaint, borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: _red.withOpacity(0.3)),
+                ),
+                child: const Icon(Icons.remove_circle_outline, color: _red, size: 16),
               ),
-          ],
-        ),
+            ),
+        ]),
       ),
     );
   }
 
   void _confirmSkip(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        title: const Text('Marcar como não realizada?'),
-        content: const Text('A tarefa irá para a lista de Pendências.'),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancelar')),
-          ElevatedButton(
-            onPressed: () { Navigator.pop(context); onSkip(); },
-            style: ElevatedButton.styleFrom(backgroundColor: _red, foregroundColor: _white),
-            child: const Text('Confirmar'),
-          ),
-        ],
-      ),
-    );
+    showDialog(context: context, builder: (_) => AlertDialog(
+      title: const Text('Marcar como não realizada?'),
+      content: const Text('A tarefa irá para a lista de Pendências.'),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancelar')),
+        ElevatedButton(
+          onPressed: () { Navigator.pop(context); onSkip(); },
+          style: ElevatedButton.styleFrom(backgroundColor: _red, foregroundColor: _white),
+          child: const Text('Confirmar'),
+        ),
+      ],
+    ));
   }
 }
 
-// ─── WIDGET: PENDING CARD ─────────────────────────────────────────────
+// ─── PENDING CARD ────────────────────────────────────────────────────
 class _PendingCard extends StatelessWidget {
   final dynamic task;
-  final VoidCallback onRestore;
-  final VoidCallback onComplete;
-
+  final VoidCallback onRestore, onComplete;
   const _PendingCard({required this.task, required this.onRestore, required this.onComplete});
 
   @override
@@ -939,64 +883,57 @@ class _PendingCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: _white,
-        borderRadius: BorderRadius.circular(14),
+        color: _white, borderRadius: BorderRadius.circular(14),
         border: Border.all(color: _red.withOpacity(0.3)),
         boxShadow: [BoxShadow(color: _red.withOpacity(0.06), blurRadius: 8, offset: const Offset(0, 2))],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-            decoration: BoxDecoration(color: _redFaint, borderRadius: BorderRadius.circular(8)),
-            child: Text((task['section'] ?? 'Geral').toUpperCase(),
-                style: const TextStyle(color: _red, fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 0.5)),
-          ),
-          const SizedBox(height: 8),
-          Text(task['title'] ?? '',
-              style: const TextStyle(color: _textDark, fontSize: 14, height: 1.4)),
-          const SizedBox(height: 4),
-          Row(children: [
-            const Icon(Icons.people_outline, size: 11, color: _textLight),
-            const SizedBox(width: 3),
-            Text(task['responsible'] ?? '', style: const TextStyle(color: _textLight, fontSize: 11)),
-          ]),
-          const SizedBox(height: 12),
-          Row(children: [
-            Expanded(
-              child: OutlinedButton.icon(
-                onPressed: onRestore,
-                icon: const Icon(Icons.undo, size: 14),
-                label: const Text('Restaurar', style: TextStyle(fontSize: 12)),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: _purple, side: const BorderSide(color: _purple),
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                ),
-              ),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+          decoration: BoxDecoration(color: _redFaint, borderRadius: BorderRadius.circular(8)),
+          child: Text((task['section'] ?? 'Geral').toUpperCase(), style: const TextStyle(
+              color: _red, fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 0.5)),
+        ),
+        const SizedBox(height: 8),
+        Text(task['title'] ?? '',
+            style: const TextStyle(color: _textDark, fontSize: 14, height: 1.4)),
+        const SizedBox(height: 4),
+        Row(children: [
+          const Icon(Icons.people_outline, size: 11, color: _textLight),
+          const SizedBox(width: 3),
+          Text(task['responsible'] ?? '',
+              style: const TextStyle(color: _textLight, fontSize: 11)),
+        ]),
+        const SizedBox(height: 12),
+        Row(children: [
+          Expanded(child: OutlinedButton.icon(
+            onPressed: onRestore,
+            icon: const Icon(Icons.undo, size: 14),
+            label: const Text('Restaurar', style: TextStyle(fontSize: 12)),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: _purple, side: const BorderSide(color: _purple),
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: ElevatedButton.icon(
-                onPressed: onComplete,
-                icon: const Icon(Icons.check, size: 14),
-                label: const Text('Concluir', style: TextStyle(fontSize: 12)),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: _green, foregroundColor: _white,
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                ),
-              ),
+          )),
+          const SizedBox(width: 8),
+          Expanded(child: ElevatedButton.icon(
+            onPressed: onComplete,
+            icon: const Icon(Icons.check, size: 14),
+            label: const Text('Concluir', style: TextStyle(fontSize: 12)),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: _green, foregroundColor: _white,
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             ),
-          ]),
-        ],
-      ),
+          )),
+        ]),
+      ]),
     );
   }
 }
 
-// ─── WIDGET: SHORTAGE SECTION ─────────────────────────────────────────
+// ─── SHORTAGE SECTION ────────────────────────────────────────────────
 class _ShortageSection extends StatelessWidget {
   final IconData icon;
   final String title;
@@ -1015,9 +952,7 @@ class _ShortageSection extends StatelessWidget {
     final nameCtrl = TextEditingController();
     final noteCtrl = TextEditingController();
     showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
+      context: context, isScrollControlled: true, backgroundColor: Colors.transparent,
       builder: (_) => _AddSheet(
         title: title,
         fields: [
@@ -1025,7 +960,8 @@ class _ShortageSection extends StatelessWidget {
           _Field(ctrl: noteCtrl, label: 'Observação', hint: 'Observação (opcional)...'),
         ],
         onConfirm: () {
-          if (nameCtrl.text.trim().isNotEmpty) onAdd(nameCtrl.text.trim(), noteCtrl.text.trim());
+          if (nameCtrl.text.trim().isNotEmpty)
+            onAdd(nameCtrl.text.trim(), noteCtrl.text.trim());
         },
       ),
     );
@@ -1035,91 +971,88 @@ class _ShortageSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: _white,
-        borderRadius: BorderRadius.circular(16),
+        color: _white, borderRadius: BorderRadius.circular(16),
         border: Border.all(color: color.withOpacity(0.2)),
         boxShadow: [BoxShadow(color: color.withOpacity(0.06), blurRadius: 10, offset: const Offset(0, 3))],
       ),
-      child: Column(
-        children: [
-          // Header
-          Container(
+      child: Column(children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          decoration: BoxDecoration(
+            color: faintColor,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+            border: Border(bottom: BorderSide(color: color.withOpacity(0.15))),
+          ),
+          child: Row(children: [
+            Icon(icon, color: color, size: 18),
+            const SizedBox(width: 8),
+            Expanded(child: Text(title, style: TextStyle(
+                color: color, fontWeight: FontWeight.bold, fontSize: 13))),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+              decoration: BoxDecoration(color: color.withOpacity(0.1), borderRadius: BorderRadius.circular(10)),
+              child: Text('${items.length}',
+                  style: TextStyle(color: color, fontSize: 11, fontWeight: FontWeight.bold)),
+            ),
+          ]),
+        ),
+        if (items.isEmpty)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Text('Nenhum item em falta 👍',
+                style: TextStyle(color: color.withOpacity(0.5), fontSize: 13)),
+          )
+        else
+          ...items.map((item) => Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-              color: faintColor,
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-              border: Border(bottom: BorderSide(color: color.withOpacity(0.15))),
+              border: Border(bottom: BorderSide(color: color.withOpacity(0.08))),
             ),
             child: Row(children: [
-              Icon(icon, color: color, size: 18),
-              const SizedBox(width: 8),
-              Expanded(child: Text(title,
-                  style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 13))),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                decoration: BoxDecoration(color: color.withOpacity(0.1), borderRadius: BorderRadius.circular(10)),
-                child: Text('${items.length}',
-                    style: TextStyle(color: color, fontSize: 11, fontWeight: FontWeight.bold)),
+              Icon(Icons.circle, color: color.withOpacity(0.4), size: 8),
+              const SizedBox(width: 10),
+              Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(item['name'] ?? '',
+                    style: const TextStyle(color: _textDark, fontSize: 14)),
+                if ((item['note'] ?? '').isNotEmpty)
+                  Text(item['note'],
+                      style: const TextStyle(color: _textLight, fontSize: 12)),
+              ])),
+              GestureDetector(
+                onTap: () => onResolve(item['id']),
+                child: Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    color: _greenFaint, borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: _green.withOpacity(0.3)),
+                  ),
+                  child: const Icon(Icons.check, color: _green, size: 16),
+                ),
               ),
             ]),
-          ),
-
-          if (items.isEmpty)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: Text('Nenhum item em falta 👍',
-                  style: TextStyle(color: color.withOpacity(0.5), fontSize: 13)),
-            )
-          else
-            ...items.map((item) => Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: color.withOpacity(0.08)))),
-              child: Row(children: [
-                Icon(Icons.circle, color: color.withOpacity(0.4), size: 8),
-                const SizedBox(width: 10),
-                Expanded(child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(item['name'] ?? '', style: const TextStyle(color: _textDark, fontSize: 14)),
-                    if ((item['note'] ?? '').isNotEmpty)
-                      Text(item['note'], style: const TextStyle(color: _textLight, fontSize: 12)),
-                  ],
-                )),
-                GestureDetector(
-                  onTap: () => onResolve(item['id']),
-                  child: Container(
-                    padding: const EdgeInsets.all(6),
-                    decoration: BoxDecoration(
-                      color: _greenFaint, borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: _green.withOpacity(0.3)),
-                    ),
-                    child: const Icon(Icons.check, color: _green, size: 16),
-                  ),
-                ),
-              ]),
-            )),
-
-          // Botão adicionar
-          InkWell(
-            onTap: () => _showAddSheet(context),
-            borderRadius: const BorderRadius.vertical(bottom: Radius.circular(16)),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: BoxDecoration(border: Border(top: BorderSide(color: color.withOpacity(0.15)))),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Icon(Icons.add, color: color, size: 16),
-                const SizedBox(width: 6),
-                Text('Adicionar item', style: TextStyle(color: color, fontSize: 13, fontWeight: FontWeight.w500)),
-              ]),
+          )),
+        InkWell(
+          onTap: () => _showAddSheet(context),
+          borderRadius: const BorderRadius.vertical(bottom: Radius.circular(16)),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            decoration: BoxDecoration(
+              border: Border(top: BorderSide(color: color.withOpacity(0.15))),
             ),
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Icon(Icons.add, color: color, size: 16),
+              const SizedBox(width: 6),
+              Text('Adicionar item', style: TextStyle(
+                  color: color, fontSize: 13, fontWeight: FontWeight.w500)),
+            ]),
           ),
-        ],
-      ),
+        ),
+      ]),
     );
   }
 }
 
-// ─── WIDGET: ADD SHEET ────────────────────────────────────────────────
+// ─── ADD SHEET ───────────────────────────────────────────────────────
 class _Field {
   final TextEditingController ctrl;
   final String label, hint;
@@ -1142,64 +1075,55 @@ class _AddSheet extends StatelessWidget {
         color: _white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(child: Container(width: 40, height: 4,
-              decoration: BoxDecoration(color: _purpleBorder, borderRadius: BorderRadius.circular(2)))),
-          const SizedBox(height: 16),
-          Row(children: [
-            const Icon(Icons.add_circle_outline, color: _purple),
-            const SizedBox(width: 8),
-            Expanded(child: Text(title,
-                style: const TextStyle(color: _textDark, fontSize: 15, fontWeight: FontWeight.bold))),
-            IconButton(icon: const Icon(Icons.close, color: _textLight),
-                onPressed: () => Navigator.pop(context)),
-          ]),
-          const SizedBox(height: 14),
-          ...fields.map((f) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(f.label,
-                  style: const TextStyle(color: _purple, fontWeight: FontWeight.w600, fontSize: 12, letterSpacing: 0.4)),
-              const SizedBox(height: 6),
-              TextField(
-                controller: f.ctrl,
-                maxLines: f.maxLines,
-                textCapitalization: TextCapitalization.sentences,
-                decoration: InputDecoration(
-                  hintText: f.hint,
-                  hintStyle: const TextStyle(color: _textLight),
-                  filled: true,
-                  fillColor: _purpleFaint,
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: _purple, width: 1.5)),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                ),
-              ),
-              const SizedBox(height: 12),
-            ],
-          )),
-          const SizedBox(height: 4),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton.icon(
-              icon: const Icon(Icons.check),
-              label: const Text('Adicionar'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: _purple, foregroundColor: _white,
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                elevation: 4, shadowColor: _purple.withOpacity(0.4),
-              ),
-              onPressed: () { onConfirm(); Navigator.pop(context); },
+      child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Center(child: Container(width: 40, height: 4,
+            decoration: BoxDecoration(color: _purpleBorder, borderRadius: BorderRadius.circular(2)))),
+        const SizedBox(height: 16),
+        Row(children: [
+          const Icon(Icons.add_circle_outline, color: _purple),
+          const SizedBox(width: 8),
+          Expanded(child: Text(title, style: const TextStyle(
+              color: _textDark, fontSize: 15, fontWeight: FontWeight.bold))),
+          IconButton(icon: const Icon(Icons.close, color: _textLight),
+              onPressed: () => Navigator.pop(context)),
+        ]),
+        const SizedBox(height: 14),
+        ...fields.map((f) => Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(f.label, style: const TextStyle(
+              color: _purple, fontWeight: FontWeight.w600, fontSize: 12, letterSpacing: 0.4)),
+          const SizedBox(height: 6),
+          TextField(
+            controller: f.ctrl, maxLines: f.maxLines,
+            textCapitalization: TextCapitalization.sentences,
+            decoration: InputDecoration(
+              hintText: f.hint,
+              hintStyle: const TextStyle(color: _textLight),
+              filled: true, fillColor: _purpleFaint,
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none),
+              focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: _purple, width: 1.5)),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             ),
           ),
-        ],
-      ),
+          const SizedBox(height: 12),
+        ])),
+        const SizedBox(height: 4),
+        SizedBox(
+          width: double.infinity,
+          child: ElevatedButton.icon(
+            icon: const Icon(Icons.check),
+            label: const Text('Adicionar'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: _purple, foregroundColor: _white,
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              elevation: 4, shadowColor: _purple.withOpacity(0.4),
+            ),
+            onPressed: () { onConfirm(); Navigator.pop(context); },
+          ),
+        ),
+      ]),
     );
   }
 }
