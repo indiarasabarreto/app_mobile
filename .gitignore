@@ -25,6 +25,7 @@ token.txt
 
 # Flutter
 build/
+app_mobile/build/
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
