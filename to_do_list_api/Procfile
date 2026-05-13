@@ -1,1 +1,1 @@
-web: gunicorn to_do_list_api.wsgi
+web: gunicorn to_do_list_api.wsgi --bind 0.0.0.0:$PORT

@@ -30,9 +30,9 @@ const _redFaint    = Color(0xFFFFEBEE);
 const _green       = Color(0xFF2E7D32);
 const _greenFaint  = Color(0xFFE8F5E9);
 
-const _baseUrl     = "https://appmobile-production-1f4d.up.railway.app/api/tasks/";
-const _suppliesUrl = "https://appmobile-production-1f4d.up.railway.app/api/supplies/";
-const _elementsUrl = "https://appmobile-production-1f4d.up.railway.app/api/elements/";
+const _baseUrl     = "https://app-mobile-a9xp.onrender.com/api/tasks/";
+const _suppliesUrl = "https://app-mobile-a9xp.onrender.com/api/supplies/";
+const _elementsUrl = "https://app-mobile-a9xp.onrender.com/api/elements/";
 
 // ─── APP ─────────────────────────────────────────────────────────────
 class TempleApp extends StatelessWidget {
@@ -101,8 +101,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('user_name', _nameCtrl.text.trim());
     await prefs.setString('user_team', _team);
-    if (mounted) Navigator.pushReplacement(context,
+    if (mounted) {
+      Navigator.pushReplacement(context,
         MaterialPageRoute(builder: (_) => const HomeScreen()));
+    }
   }
 
   @override
@@ -258,8 +260,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   Future<void> _logout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
-    if (mounted) Navigator.pushReplacement(context,
+    if (mounted) {
+      Navigator.pushReplacement(context,
         MaterialPageRoute(builder: (_) => const WelcomeScreen()));
+    }
   }
 
   @override
@@ -285,7 +289,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 child: Image.asset(
                   'assets/logo.jpeg',
                   fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) =>
+                  errorBuilder: (_, _, _) =>
                       const Icon(Icons.auto_awesome, color: _purple, size: 20),
                 ),
               ),
@@ -703,8 +707,9 @@ class _SectionCard extends StatelessWidget {
           _Field(ctrl: respCtrl, label: 'Responsável', hint: 'Nome ou equipe...'),
         ],
         onConfirm: () {
-          if (titleCtrl.text.trim().isNotEmpty)
+          if (titleCtrl.text.trim().isNotEmpty) {
             onAddTask(titleCtrl.text.trim(), respCtrl.text.trim());
+          }
         },
       ),
     );
@@ -960,8 +965,9 @@ class _ShortageSection extends StatelessWidget {
           _Field(ctrl: noteCtrl, label: 'Observação', hint: 'Observação (opcional)...'),
         ],
         onConfirm: () {
-          if (nameCtrl.text.trim().isNotEmpty)
+          if (nameCtrl.text.trim().isNotEmpty) {
             onAdd(nameCtrl.text.trim(), noteCtrl.text.trim());
+          }
         },
       ),
     );
